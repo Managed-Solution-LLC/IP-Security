@@ -6,6 +6,7 @@ Usage: python blocklist_manager.py [options]
 """
 
 import ipaddress
+import json
 import sys
 from pathlib import Path
 from typing import Set, List, Tuple, Union
@@ -130,7 +131,6 @@ class BlocklistManager:
                 f.write("</RequireAll>\n")
                 
             elif format_type == "json":
-                import json
                 data = {
                     "blocked_ips": [str(ip) for ip in sorted_networks],
                     "total_count": len(self.blocked_ips)

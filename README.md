@@ -50,7 +50,9 @@ Example:
 
 1. **Download the lists you need:**
    ```bash
-   wget https://raw.githubusercontent.com/Managed-Solution-LLC/IP-Security/main/blocklists/malware.txt
+   wget https://raw.githubusercontent.com/YOUR-USERNAME/IP-Security/main/blocklists/malware.txt
+   # Or clone the repository
+   git clone https://github.com/YOUR-USERNAME/IP-Security.git
    ```
 
 2. **Apply to your firewall/security tool** (see examples directory)
