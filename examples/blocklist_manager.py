@@ -8,7 +8,7 @@ Usage: python blocklist_manager.py [options]
 import ipaddress
 import sys
 from pathlib import Path
-from typing import Set, List, Tuple
+from typing import Set, List, Tuple, Union
 import argparse
 
 
@@ -17,7 +17,7 @@ class BlocklistManager:
     
     def __init__(self, blocklist_dir: str = "../blocklists"):
         self.blocklist_dir = Path(blocklist_dir)
-        self.blocked_ips: Set[ipaddress.IPv4Network | ipaddress.IPv6Network] = set()
+        self.blocked_ips: Set[Union[ipaddress.IPv4Network, ipaddress.IPv6Network]] = set()
         
     def load_blocklist(self, filename: str) -> int:
         """Load IPs from a blocklist file."""
@@ -28,7 +28,7 @@ class BlocklistManager:
             return 0
             
         count = 0
-        with open(filepath, 'r') as f:
+        with open(filepath, 'r', encoding='utf-8') as f:
             for line_num, line in enumerate(f, 1):
                 line = line.strip()
                 
@@ -94,7 +94,7 @@ class BlocklistManager:
     
     def export_to_format(self, output_file: str, format_type: str = "plain") -> None:
         """Export blocklist to different formats."""
-        with open(output_file, 'w') as f:
+        with open(output_file, 'w', encoding='utf-8') as f:
             if format_type == "plain":
                 for network in sorted(self.blocked_ips):
                     f.write(f"{network}\n")
