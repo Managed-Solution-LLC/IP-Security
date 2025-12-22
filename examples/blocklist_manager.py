@@ -92,24 +92,32 @@ class BlocklistManager:
         print(f"Total checked: {len(ip_list)}, Blocked: {blocked_count}, "
               f"Allowed: {len(ip_list) - blocked_count}")
     
+    def _sort_networks(self) -> List[Union[ipaddress.IPv4Network, ipaddress.IPv6Network]]:
+        """Sort networks, separating IPv4 and IPv6."""
+        ipv4_networks = sorted([n for n in self.blocked_ips if n.version == 4])
+        ipv6_networks = sorted([n for n in self.blocked_ips if n.version == 6])
+        return ipv4_networks + ipv6_networks
+    
     def export_to_format(self, output_file: str, format_type: str = "plain") -> None:
         """Export blocklist to different formats."""
+        sorted_networks = self._sort_networks()
+        
         with open(output_file, 'w', encoding='utf-8') as f:
             if format_type == "plain":
-                for network in sorted(self.blocked_ips):
+                for network in sorted_networks:
                     f.write(f"{network}\n")
                     
             elif format_type == "iptables":
                 f.write("#!/bin/bash\n")
                 f.write("# Generated iptables rules\n\n")
-                for network in sorted(self.blocked_ips):
+                for network in sorted_networks:
                     f.write(f"iptables -A INPUT -s {network} -j DROP\n")
                     
             elif format_type == "nginx":
                 f.write("# Generated nginx geo block\n")
                 f.write("geo $blocked_ip {\n")
                 f.write("    default 0;\n")
-                for network in sorted(self.blocked_ips):
+                for network in sorted_networks:
                     f.write(f"    {network} 1;\n")
                 f.write("}\n")
                 
@@ -117,14 +125,14 @@ class BlocklistManager:
                 f.write("# Generated Apache blocklist\n")
                 f.write("<RequireAll>\n")
                 f.write("    Require all granted\n")
-                for network in sorted(self.blocked_ips):
+                for network in sorted_networks:
                     f.write(f"    Require not ip {network}\n")
                 f.write("</RequireAll>\n")
                 
             elif format_type == "json":
                 import json
                 data = {
-                    "blocked_ips": [str(ip) for ip in sorted(self.blocked_ips)],
+                    "blocked_ips": [str(ip) for ip in sorted_networks],
                     "total_count": len(self.blocked_ips)
                 }
                 json.dump(data, f, indent=2)
