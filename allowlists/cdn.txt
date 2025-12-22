@@ -1,0 +1,50 @@
+# CDN Provider IP Allowlist
+# Last Updated: 2025-12-22
+# Description: IP ranges used by major Content Delivery Network providers
+# Format: One IP or CIDR range per line
+# Source: Official CDN provider documentation
+#
+# Use Case: When you need to identify or allow CDN traffic
+# Note: These ranges may change - verify with provider documentation
+
+# Cloudflare IPv4 ranges (example subset - check official list)
+# Official source: https://www.cloudflare.com/ips/
+# Note: Replace with actual Cloudflare ranges
+192.0.2.0/24
+198.51.100.0/24
+
+# Fastly IPv4 ranges (example)
+# Official source: https://api.fastly.com/public-ip-list
+203.0.113.0/24
+
+# Akamai ranges (example)
+# Note: Akamai has extensive ranges - consult official documentation
+# Official source: Contact Akamai support or use their tools
+192.0.2.128/25
+
+# Amazon CloudFront (example)
+# Official source: https://ip-ranges.amazonaws.com/ip-ranges.json
+198.51.100.128/25
+
+# Google Cloud CDN (example)
+# Official source: https://www.gstatic.com/ipranges/goog.json
+203.0.113.128/25
+
+# IPv6 CDN ranges (examples using documentation prefix)
+2001:db8:5::/48
+2001:db8:6::/48
+
+# Notes:
+# - IMPORTANT: These are EXAMPLE entries using TEST-NET addresses
+# - For production use, obtain actual IP ranges from CDN providers
+# - CDN ranges change regularly - automate updates if possible
+# - Each CDN provider publishes their ranges in different formats (JSON, TXT)
+# - Consider using APIs to fetch latest ranges automatically
+# - Some CDNs have different ranges for different regions
+# 
+# Official Sources:
+# - Cloudflare: https://www.cloudflare.com/ips/
+# - Fastly: https://api.fastly.com/public-ip-list
+# - Akamai: Contact support or check Luna Control Center
+# - CloudFront: https://ip-ranges.amazonaws.com/ip-ranges.json (filter by CloudFront)
+# - Google: https://www.gstatic.com/ipranges/goog.json and cloud.json
