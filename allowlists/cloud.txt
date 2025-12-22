@@ -1,0 +1,63 @@
+# Cloud Provider IP Allowlist
+# Last Updated: 2025-12-22
+# Description: IP ranges used by major cloud service providers
+# Format: One IP or CIDR range per line
+# Source: Official cloud provider documentation
+#
+# Use Case: When you need to identify or allow cloud service traffic
+# Note: These ranges may change - verify with provider documentation
+
+# Amazon Web Services (AWS) - example ranges
+# Official source: https://ip-ranges.amazonaws.com/ip-ranges.json
+# Note: AWS has extensive ranges across many services and regions
+192.0.2.0/26
+198.51.100.0/26
+
+# Microsoft Azure - example ranges
+# Official source: Download JSON from Microsoft
+# https://www.microsoft.com/en-us/download/details.aspx?id=56519
+203.0.113.0/26
+
+# Google Cloud Platform (GCP) - example ranges
+# Official source: https://www.gstatic.com/ipranges/cloud.json
+192.0.2.64/26
+
+# Oracle Cloud Infrastructure (OCI) - example ranges
+# Official source: https://docs.oracle.com/en-us/iaas/tools/public_ip_ranges.json
+198.51.100.64/26
+
+# IBM Cloud - example ranges
+# Official source: Check IBM Cloud documentation
+203.0.113.64/26
+
+# DigitalOcean - example ranges
+# Note: DigitalOcean publishes ASN information
+# ASN: AS14061
+192.0.2.192/26
+
+# Linode/Akamai Cloud - example ranges
+# Check their IP listing or ASN information
+198.51.100.192/26
+
+# IPv6 cloud ranges (examples using documentation prefix)
+2001:db8:10::/44
+2001:db8:20::/44
+2001:db8:30::/44
+
+# Notes:
+# - IMPORTANT: These are EXAMPLE entries using TEST-NET addresses
+# - For production use, obtain actual IP ranges from cloud providers
+# - Cloud provider IP ranges change regularly - automate updates
+# - Different services within a cloud may use different ranges
+# - Consider regional variations in IP assignments
+# - Use provider-specific APIs or download their official lists
+#
+# Official Sources:
+# - AWS: https://ip-ranges.amazonaws.com/ip-ranges.json
+# - Azure: https://www.microsoft.com/en-us/download/details.aspx?id=56519
+# - GCP: https://www.gstatic.com/ipranges/cloud.json
+# - Oracle: https://docs.oracle.com/en-us/iaas/tools/public_ip_ranges.json
+# - DigitalOcean: Use BGP/ASN lookups (AS14061)
+#
+# Automation Example:
+# curl -s https://ip-ranges.amazonaws.com/ip-ranges.json | jq -r '.prefixes[] | .ip_prefix'
