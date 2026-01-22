@@ -1,0 +1,37 @@
+# Tor Exit Node IP Blocklist
+# Last Updated: 2025-12-22
+# Description: Known Tor exit node IP addresses
+# Format: One IP or CIDR range per line
+# Source: Tor Project directory listings
+#
+# NOTE: Blocking Tor may impact privacy-conscious legitimate users
+# Consider your use case before implementing this blocklist
+#
+# IMPORTANT: This is a sample/template file. For actual Tor exit nodes,
+# use the official list from: https://check.torproject.org/exit-addresses
+
+# Example entries (using TEST-NET addresses per RFC 5737)
+# Replace these with real Tor exit nodes from official Tor Project sources
+
+# Tor exit nodes
+192.0.2.150
+192.0.2.151
+192.0.2.152
+192.0.2.153
+
+198.51.100.160
+198.51.100.161
+
+203.0.113.170
+203.0.113.171/31
+
+# IPv6 Tor exits
+2001:db8:3::30
+2001:db8:3::31
+
+# Notes:
+# - Tor exit nodes change frequently - update daily if possible
+# - Official source: https://check.torproject.org/torbulkexitlist
+# - Consider allowing Tor for certain services (privacy-focused apps)
+# - Some jurisdictions may have legal requirements around Tor blocking
+# - Legitimate use cases: journalism, activism, privacy research

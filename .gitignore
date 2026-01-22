@@ -1,1 +1,90 @@
-build/lists/*
+# IP-Security .gitignore
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# Node.js (if adding JS tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+*.o
+*.a
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Logs
+*.log
+logs/
+
+# Test files
+test-*.txt
+test_*.txt
+.coverage
+htmlcov/
+
+# Local configuration
+.env
+.env.local
+config.local.*
+
+# Generated files
+generated/
+output/
+
+# Backup files
+*.backup
+
+# Archive files (keep originals only)
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+
+# Private lists (if users create custom lists)
+private/
+custom/
+local/
