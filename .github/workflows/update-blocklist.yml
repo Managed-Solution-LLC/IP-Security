@@ -1,0 +1,54 @@
+name: Update IP Blocklist
+
+on:
+  schedule:
+    # Runs daily at 2:00 AM UTC (adjust timezone as needed)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  update-blocklist:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      - name: Run blocklist update script
+        run: |
+          cd build
+          python buildIPList.py
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code || echo "changes=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push if changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add primary_blocklist.txt build/lists/*.txt
+          git commit -m "🤖 Automated blocklist update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git push
+      
+      - name: Summary
+        run: |
+          if [ "${{ steps.git-check.outputs.changes }}" == "true" ]; then
+            echo "✅ Blocklist updated and committed"
+          else
+            echo "ℹ️ No changes detected - blocklist is up to date"
+          fi
