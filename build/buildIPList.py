@@ -34,7 +34,7 @@ def fetch_and_filter_ipsum():
                     continue
         
         # Create output directory if it doesn't exist
-        output_dir = os.path.join(os.path.dirname(__file__), 'lists')
+        output_dir = os.path.join(os.path.dirname(__file__), 'blocklists')
         os.makedirs(output_dir, exist_ok=True)
         
         # Write filtered IPs to file with header
@@ -87,7 +87,7 @@ def fetch_alienvault_reputation():
                     filtered_ips.append(ip_address)
         
         # Create output directory if it doesn't exist
-        output_dir = os.path.join(os.path.dirname(__file__), 'lists')
+        output_dir = os.path.join(os.path.dirname(__file__), 'blocklists')
         os.makedirs(output_dir, exist_ok=True)
         
         # Write IPs to file with header

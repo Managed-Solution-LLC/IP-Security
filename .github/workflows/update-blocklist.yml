@@ -41,7 +41,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add primary_blocklist.txt build/lists/*.txt
+          git add primary_blocklist.txt build/blocklists/*.txt
           git commit -m "🤖 Automated blocklist update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
           git push
       
