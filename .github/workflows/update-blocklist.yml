@@ -26,10 +26,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
       
-      - name: Run blocklist update script
+      - name: Run blocklist update scripts
         run: |
           cd build
           python buildIPList.py
+          python buildCategorizedLists.py
       
       - name: Check for changes
         id: git-check
@@ -41,7 +42,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add primary_blocklist.txt build/blocklists/*.txt
+          git add primary_blocklist.txt build/blocklists/*.txt blocklists/*.txt
           git commit -m "🤖 Automated blocklist update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
           git push
       
