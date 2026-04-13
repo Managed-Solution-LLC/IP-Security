@@ -1,6 +1,6 @@
 # Primary IP Blocklist
 # Sources: IPsum (2+ hits), AlienVault OTX
-# Last Updated: 2026-04-13 08:57:11 UTC
+# Last Updated: 2026-04-13 17:18:42 UTC
 # Total Unique IPs: 33606
 1.13.22.203
 1.145.124.191

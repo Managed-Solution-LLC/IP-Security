@@ -1,5 +1,5 @@
 # Abuse & Spam IP Blocklist
-# Last Updated: 2026-04-13 17:14:57 UTC
+# Last Updated: 2026-04-13 17:18:44 UTC
 # Description: IP addresses associated with spam, port scanning, brute force attacks, and general abuse
 # Format: One IP or CIDR range per line
 # Sources: blocklist.de (SSH, Mail, Apache, Bruteforce)
