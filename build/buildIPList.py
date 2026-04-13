@@ -124,7 +124,7 @@ def create_master_list(ipsum_ips, alienvault_ips):
         sorted_ips = sorted(all_ips)
         
         # Write master list to root directory
-        root_dir = os.path.join(os.path.dirname(__file__), 'blocklists')
+        root_dir = os.path.dirname(os.path.dirname(__file__))
         output_file = os.path.join(root_dir, 'primary_blocklist.txt')
         
         with open(output_file, 'w') as f:
