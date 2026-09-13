@@ -1,5 +1,5 @@
 # Source: https://reputation.alienvault.com/reputation.generic
-# Last Updated: 2026-09-12 08:28:08 UTC
+# Last Updated: 2026-09-13 08:29:22 UTC
 49.143.32.6
 222.77.181.28
 180.151.24.60
